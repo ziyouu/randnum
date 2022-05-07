@@ -35,9 +35,10 @@ jobs:
       #     file: ./Dockerfile
       #     push: true
       #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/randimg:${{ github.ref_name }}
-        - name: Build and push
-          uses: docker/build-push-action@v3
-          with:
+    -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
           push: true
           tags: user/app:latest
 
