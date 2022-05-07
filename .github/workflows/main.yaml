@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     
-    Steps:
+    steps:
 
       # Step 1 ==> Checkout
         name: Checkout the code from github repo
