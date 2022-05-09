@@ -8,8 +8,6 @@ on:
 jobs:
   build_and_upload:
     runs-on: ubuntu-latest
-
-    
     steps:
 
       # Step 1 ==> Checkout
