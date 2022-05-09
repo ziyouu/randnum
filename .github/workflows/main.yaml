@@ -17,7 +17,7 @@ jobs:
         name: Checkout the code from github repo
         uses: actions/checkout@v3
 
-      # Step 2 ==> Docker Login
+      # Step 2 ==> Docker login
       - 
         name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -25,7 +25,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      # https://github.com/marketplace/actions/build-and-push-docker-images
+      # Step 3 ==> Docker build and push
       -
         name: Build and push
         uses: docker/build-push-action@v3
@@ -33,11 +33,25 @@ jobs:
           push: true
           tags: zhaoziyouuuu/randnum:v0.4 
 
-      # # https://github.com/marketplace/actions/slack-webhook
-      # - name: Post message on slack
-      #   uses: bluenovaio/action-slack@main 
-      #   with:
-      #     username: "Somik"
-      #     icon_emoji: ":robot_face:"
-      #     text:  "${{secrets.SLACK_MSG}} \nRepo: ${{ github.repositoryUrl }}\nImage name: ${{ secrets.DOCKERHUB_USERNAME }}/randimg:${{github.ref_name}}\nImage url: https://hub.docker.com/repository/docker/somik123/randimg"
-          # webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+      # Step 4 ==> Slack notification
+      - 
+        name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          # For posting a rich message using Block Kit
+          payload: |
+            {             
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Name:Zhao Ziyou \n Matriculation:A0184806X \n Email:nicoziyou@163.com \n Repo: ${{ git@github.com:ziyouu/randnum.git}} \n Image name: zhaoziyouuuu/randnum:${{github.ref_name}} \n Image url: https://hub.docker.com/repository/docker/zhaoziyouuuu/randnum "
+                  }
+                }
+              ]
+            }
+        env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
