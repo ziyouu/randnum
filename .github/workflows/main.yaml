@@ -1,9 +1,9 @@
 name: Pipeline to docker and slack
 on:
-  push:
-    # types: [published]
-    # tag:
-    # - v1.*
+  release:
+    types: [published]
+    tag:
+    - v1.*
 
 jobs:
   build_and_upload:
