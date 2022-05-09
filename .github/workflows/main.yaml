@@ -1,4 +1,4 @@
-name: Github 2 Dockerhub 2 Slack
+name: Pipeline to docker and slack
 on:
   push:
     # types: [published]
