@@ -1,6 +1,6 @@
 name: Pipeline to docker and slack
 on:
-  release:
+  push:
     types: [published]
     tag:
     - v1.*
