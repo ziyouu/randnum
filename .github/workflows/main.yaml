@@ -1,9 +1,9 @@
 name: DipSA CICD Workshop
 on:
-  push:
-    # types: [published]
-    # tag:
-    # - v1.*
+  release:
+    types: [published]
+    tag:
+    - v1.*
 
 jobs:
   build_and_upload:
@@ -45,7 +45,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Name: Zhao Ziyou \n Matriculation: A0184806X \n Email: nicoziyou@163.com \n Repo: ${{ github.repositoryurl }} \n Image name: zhaoziyouuuu/randnum:${{ github.ref_name }} \n Image url: https://hub.docker.com/repository/docker/zhaoziyouuuu/randnum "
+                    "text": "Name: Zhao Ziyou \n Matriculation: A0184806X \n Email: nicoziyou@163.com \n Repo: ${{  }} \n Image name: zhaoziyouuuu/randnum:${{ github.ref_name }} \n Image url: https://hub.docker.com/repository/docker/zhaoziyouuuu/randnum "
                   }
                 }
               ]
