@@ -1,9 +1,9 @@
-name: Pipeline to docker and slack
+name: DipSA CICD Workshop
 on:
   push:
-    types: [published]
-    tag:
-    - v1.*
+    # types: [published]
+    # tag:
+    # - v1.*
 
 jobs:
   build_and_upload:
