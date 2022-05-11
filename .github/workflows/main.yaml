@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: zhaoziyouuuu/randnum:v0.4 
+          tags: zhaoziyouuuu/randnum:${{ github.ref_name }} 
 
       # Step 4 ==> Slack notification
       - 
@@ -43,11 +43,11 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Name: Zhao Ziyou \n Matriculation: A0184806X \n Email: nicoziyou@163.com \n Repo: ${{ github.repositoryUrl }} \n Image name: zhaoziyouuuu/randnum:${{ github.ref_name }} \n Image url: https://hub.docker.com/repository/docker/zhaoziyouuuu/randnum "
+                    "text": "Name: Zhao Ziyou \n Matriculation: ${{ secrets.NUS_MAT }} \n Email: ${{ secrets.OWN_EMAIL }} \n Repo: ${{ github.repositoryUrl }} \n Image name: zhaoziyouuuu/randnum:${{ github.ref_name }} \n Image url: https://hub.docker.com/repository/docker/zhaoziyouuuu/randnum "
                   }
                 }
               ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK  
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
